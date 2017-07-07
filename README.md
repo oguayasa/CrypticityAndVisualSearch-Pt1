@@ -326,7 +326,7 @@ Total Search Time
 
 **Figure 4**
 
-![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/compareR2Val.4.jpg)
+![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/compareR1Val.4.jpg)
 
 
 Target likelihood of being gazed at
@@ -420,7 +420,7 @@ Remember how the correlation analysis said that for the Least Found targets in t
 
 **Figure 8**
 
-![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/CoorsR1Val.3.jpg)
+![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/CorrsR1Val.3.jpg)
 
 Almost flat lines, no relationships here.
 
@@ -429,7 +429,7 @@ Realtionship Between Search Time and Identificiation Likelihood
 
 **Figure 9**
 
-![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/CoorsR1Val.6.jpg)
+![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/CorrsR1Val.6.jpg)
 
 For the Least Found in the Validation Experiment, ot looks like there could be something there, but it could just be the effect of those outliers on the left hand side of the plot. Those outlier may be exerting a lot of influence for just a few data points, dragging that side of the line upwards. If you got rid of those, the line would probaby lie flat. This is also a great example of why should look at both the data and do statisical tests, but for the opposite reason as before. Here, the non-parametric test was less affected by the magnitude of outliers, and correctly reported a non-significant relationship.
 
