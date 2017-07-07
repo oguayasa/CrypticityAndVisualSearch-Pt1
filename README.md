@@ -1,8 +1,11 @@
 Validating the Difficulty of Visual Search Stimuli Sets
-==================
+=======================================================
 
 Olivia Guayasamin
 7/7/2017
+
+Summary
+--------
 
 This code demonstrates the initial analysis of two visual search studies (an observational study to discover and sort potential target stimuli and a validation experiment conducted on stimuli selected from the observatio study) that were designed to 1) identify which individual target stimuli were found by the greatest number of subjects and which were found by the least number of subjects during a visual search task, 2) use these most and least found stimuli to create easy and hard versions of a visual search task, and 3) validate the difficulty of these two stimuli setsin a true experiment.
 
@@ -122,6 +125,9 @@ for (i in 1:length(r1.Val.List)){
 ```
 
 **Figure 1** Histograms and qq-plots describing variable distributions. This example contains data from the Least Found targets in the Validation Experiment.
+
+![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/distCheck.valLeast.jpg)
+
 
 Clearly, some of these distributions are not normal. So to formally compare central tendencies we are going to use non-parametric t-tests. Because with each study participants looked at data from targets from several groups, the data can be considered dependent. We will apply Wilcoxon Signed rank tests to determine if data are from identical or significantly different distributions.
 
@@ -312,20 +318,32 @@ Target likelihood of being found
 
 **Figure 2**
 
+![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/compareR1Val.3.jpg)
+
+
 Total Search Time
 -----------------
 
 **Figure 4**
+
+![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/compareR2Val.4.jpg)
+
 
 Target likelihood of being gazed at
 -----------------------------------
 
 **Figure 5**
 
+![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/compareR1Val.2.jpg)
+
+
 Distance from Center
 --------------------
 
 **Figure 6**
+
+![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/compareR1Val.1.jpg)
+
 
 Here, we used boxplots to convey our information. I prefer them to bar graphs because in addition to showing average values and some measures of spread, they give a visualization of the distributions. In addition, many packages for plotting boxplots come with the option to include "Notches", the triangles around the average. These basically represent 95% confindence intervals around the average, so if the notches of two boxplots do not overlap there is a good chance that a statistical test will determine that the two distributions are meaningfully different.
 
@@ -396,9 +414,13 @@ Checking for an Effect of Center Bias
 
 **Figure 7**
 
+![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/CorrsR1Val.2.jpg)
+
 Remember how the correlation analysis said that for the Least Found targets in the Validation Experiment there was a positive relationship between distance from center and likelihood of being found? Sure, it's technically significant, but in reality the relationship doesn't look like much of anything exept a line drawn through a cloud. Well, this is a great example of why you should visualize your data in addition to analysis.
 
 **Figure 8**
+
+![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/CoorsR1Val.3.jpg)
 
 Almost flat lines, no relationships here.
 
@@ -406,6 +428,8 @@ Realtionship Between Search Time and Identificiation Likelihood
 -------------------------------------------------------------
 
 **Figure 9**
+
+![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/CoorsR1Val.6.jpg)
 
 For the Least Found in the Validation Experiment, ot looks like there could be something there, but it could just be the effect of those outliers on the left hand side of the plot. Those outlier may be exerting a lot of influence for just a few data points, dragging that side of the line upwards. If you got rid of those, the line would probaby lie flat. This is also a great example of why should look at both the data and do statisical tests, but for the opposite reason as before. Here, the non-parametric test was less affected by the magnitude of outliers, and correctly reported a non-significant relationship.
 
