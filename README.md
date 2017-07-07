@@ -402,7 +402,7 @@ Remember how the correlation analysis said that for the Least Found targets in t
 
 Almost flat lines, no relationships here.
 
-Realtionship Between Search Time and Idenficiation Likelihood
+Realtionship Between Search Time and Identificiation Likelihood
 -------------------------------------------------------------
 
 **Figure 9**
