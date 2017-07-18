@@ -4,7 +4,7 @@ Validating the Difficulty of Visual Search Stimuli Sets
 Olivia Guayasamin
 7/7/2017
 
-Summary
+Introduction
 --------
 
 This code demonstrates the initial analysis of two visual search studies, an Observation Study to discover and sort potential target stimuli, and a Validation Experiment conducted on selected stimuli from the Observation Study. These two studies were designed to 1) identify which individual target stimuli were found by the greatest (and least) number of subjects during a visual search task, 2) use these Most and Least found stimuli to create Easy and Hard versions of a visual search task, and 3) validate the difficulty of the Easy and Hard stimuli sets in a true experiment.
