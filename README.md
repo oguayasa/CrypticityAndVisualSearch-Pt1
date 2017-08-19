@@ -312,39 +312,31 @@ Numbers can be boring and text takes time to read. Pictures have pretty colors, 
 
 More seriously, many formally published reports can either be very subject-specific, long, or too-technical to for most people to easily read and acquire information from. Images are a way of conveying lots of information and statistical results in a faster and more accessible way than text. However, just like how some writing can be confusing and hard to read, so can images. Take your time making them. Ask people not familiar with your project if they understand the results that the images are tryng to convey. 
 
-Target likelihood of being found
---------------------------------
+Here, we will use boxplots to convey our information. I prefer them to bar graphs because in addition to showing average values and some measures of spread, they give a visualization of the distributions. In addition, many packages for plotting boxplots come with the option to include "Notches", the triangles around the average. These basically represent 95% confindence intervals around the average, so if the notches of two boxplots do not overlap there is a good chance that a statistical test will determine that the two distributions are meaningfully different.
 
-**Figure 2**
+**Figure 2** Comparing arget likelihood of being found across groups. 
 
 ![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/compareR1Val.3.jpg)
 
 
-Total Search Time
------------------
 
-**Figure 4**
+**Figure 3** Comparing total time spent searching for a target across groups. 
 
 ![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/compareR1Val.4.jpg)
 
 
-Target likelihood of being gazed at
------------------------------------
 
-**Figure 5**
+**Figure 4** Comparing target likelihood of being gazed at across groups. 
 
 ![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/compareR1Val.2.jpg)
 
 
-Distance from Center
---------------------
 
-**Figure 6**
+**Figure 5** Comparing target distance from center across groups. 
 
 ![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/compareR1Val.1.jpg)
 
-
-Here, we used boxplots to convey our information. I prefer them to bar graphs because in addition to showing average values and some measures of spread, they give a visualization of the distributions. In addition, many packages for plotting boxplots come with the option to include "Notches", the triangles around the average. These basically represent 95% confindence intervals around the average, so if the notches of two boxplots do not overlap there is a good chance that a statistical test will determine that the two distributions are meaningfully different.
+These all validate what we've seen before, and that's the point. Instead of needing to have a dozen or so tables to show median values, test results, and comparisons, we can condense all of our work into four easily readible plots. Nice. 
 
 Correlate target features with stimuli properties and performance
 =================================================================
