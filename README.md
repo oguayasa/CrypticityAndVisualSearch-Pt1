@@ -98,6 +98,8 @@ r1.Val.List = list(r1Most = r1.Most, r1Least = r1.Least,
 Check data distributions prior to analysis
 ==========================================
 
+Before we begin with statistical analyses, it is important to first visualize the data. By doing so, we can get a sense of the data's shape, or distribution, which will help us determine which statistical tests are most appropriate for our data. If we were to skip this step and choose an innapropirate test, we would end up with false or unreliable results which could mislead future research. 
+
 Visualize data using histograms and normal quantile-quantile (qq) plots
 -----------------------------------------------------------------------
 
@@ -124,12 +126,12 @@ for (i in 1:length(r1.Val.List)){
 ![](https://github.com/oguayasa/SearchDifficultyValidation-Pt1/blob/master/imgs/distCheck.valLeast.jpg)
 
 
-Clearly, some of these distributions are not normal. So to formally compare central tendencies we are going to use non-parametric t-tests. Because with each study participants looked at data from targets from several groups, the data can be considered dependent. We will apply Wilcoxon Signed rank tests to determine if data are from identical or significantly different distributions.
+Clearly, some of these distributions are not normal. So, instead of using standard parametric t-tests to formally compare central tendencies, we are going to use non-parametric t-tests. Because targets from the Easy and Hard groups were viewed and acted on by the same group of participants, the data for the two sets of targets can be described as dependent. Therefore, we will apply Wilcoxon Signed-Rank tests (a dependent, non-parametric t-test) to determine if target features across the Easy and Hard sets come from significantly different distributions.
 
 Formally compare variable distributions across target groups
 ============================================================
 
-The particular function that I will be using for conducting the Wilcoxon Signed Rank tests does not return the median values of the groups being compared. However, median values will help interpret the results of the Wilcoxon Signed Rank Tests. Not to mention, if you are interested in publishing your results, including measures of central tendency is standard when reporting formal test results.
+The particular function that I will be using for conducting the Wilcoxon Signed-Rank tests does not return the median values of the groups being compared, but these values are necessary to interpret the results of the Wilcoxon Signed Rank Tests. Not to mention, if you are interested in publishing your results, including measures of central tendency is standard when reporting formal test results.
 
 Calculate median values to help interpret comparisons
 -----------------------------------------------------
@@ -195,14 +197,14 @@ for (i in 1:length(r1.Val.List)){
 
 From briefly glancing at these tables, it appears that during the Observational Study (Tables 1-3) there were no meaningful differences in either average target position relative to the screen center or in target likelihood to be gazed at in the first place. The fact the likelihood ot be gazed at is similar across groups is actually quite important. It means that the Most Found targets did not have any more "pop out" features the Least Found targets or distractors, indicating that a similar type of visual search was conducted on all target groups.
 
-However, there were big differences between groups in terms of average proportion of participants who clicked on targets, and the average time spent searching for those targets. Targets from the Most Found group were the most likely to be found, (obviously), but they also took less time to find than targets from the Least Found group. Distractor controls were almost never misidentified as targets, and participants seem to have spent little time searching over time. Results from Validation Experiment (Tables 4 & 5) are quite similar.
+However, there were big differences between groups in terms of average proportion of participants who clicked on targets, and the average time spent searching for those targets. Targets from the Most Found group were the most likely to be found, (obviously), but they also took less time to find, reinforcing our interpretation that they are in fact, "easier". Distractor controls were almost never misidentified as targets (which means that our subjects were focused and made few mistakes, something that's reassuring to know). Results from Validation Experiment (Tables 4 & 5) are quite similar.
 
 Iterate through variables and conduct Wilcoxon Tests across groups
 ------------------------------------------------------------------
 
-But these are just median values, which don't say anything about what we actually need to compare, the sample distributions.
+But median values are just one way of summarizing data. Because we want to compare the sample *distributions*, we need to apply our statistical tests, which take both central tendency and elements of distribution shape into account. 
 
-To avoid repetition, we'll just use the code for the Validation Wxperiment as an example of how to conduct and quickly format results from the Wilcoxon Signed Rank test. However, we'll still include the results for both studies.
+To avoid repetition, we'll use the code for examining data from the Validation Experiment, which demonstrates how to quickly run and format resutls from the Wilcoxon Signed-Rank test.  However, we'll still include the results for both studies below.
 
 ### Code example
 
@@ -231,7 +233,7 @@ for (i in 2:length(r1.Val.List$valMost)){
 }
 ```
 
-A close reading of the code will show that "statistic", "lowCI", "upCI", and "p", are formatted into the output. When reporting test results, it is best practice to include the test statistic itself (V), lower and upper confidence intervals, and finally the p-value. All of these together, not just the p-value, make interpreting the meaning and strength of the test results much easier.
+A close reading of the code will show that "statistic", "lowCI", "upCI", and "p", are formatted into the output. When reporting test results it is best practice to include the test statistic itself (in this case, V), lower and upper confidence intervals, and p-values. All of these together, not just the p-values, make interpreting the meaning and strength of the test results much easier. When these results are drafted into a manuscript, they will be presented with the median values. 
 
 ### Observational Study results
 
@@ -265,7 +267,7 @@ A close reading of the code will show that "statistic", "lowCI", "upCI", and "p"
 
 Just as indicated by the median values (Tables 1-3), the difference in target distance from the center across groups is not significant (Table 6). Surprisingly, even though the likelihood that a target was gazed at was almost identical across groups, the difference in distributions is significant (Table 7). Yet, there are cases where is it necessary to use best judgement when interpreting test results. While the difference is mathematically significant, the median values indicates that it is probably not functionally significant.
 
-The average proportion of participants to click on targets was significantly different across groups, as was total search time (Tables 8 & 9), strongly suggesting that the Most Found targets are so named because they are easier to find.
+The average proportion of participants to click on targets was significantly different across groups, as was total search time (Tables 8 & 9), supporting our previous interpretation of the median values. 
 
 ### Validation Experiment Results
 
@@ -301,12 +303,14 @@ We see a similar pattern of results in from Validation Experiment, except that t
 
 Consistent with the Observational study, for targets in the Most Found treatment the average proportion of participants to click on targets was significantly greater than in the Least Found, the average search time was far less than for targets in the Least Found Treatment (Tables 12 & 13). However, looking at the median values (Tables 4 & 5), the magnitude of these differences is much smaller in the Validation Experiment than during the Observational Study.
 
-This is likely due to the design of Observational Study, where each trial included targets of unknown, mixed difficulty (the Most Found and Least Found targets were identified post-hoc and then used to make separate sets of entirely easy and difficulty stimuli for use in the Validation Experiment). Having targets of mixed difficulty would make the Most Found targets the easiest to find in any one stimuli. In comparison, during the Validation Experiment, stimuli contained only Most Found targets or Least Found targets (as identified in the Observation Study), so no one target could be realtively easier than any others.
+This is likely due to the design of Observational Study, where each trial included targets of unknown, mixed difficulty (the Most Found and Least Found targets were identified post-hoc and then used to make separate sets of entirely easy and difficulty stimuli for use in the Validation Experiment). Having targets of mixed difficulty would make the Most Found targets the easiest to find in any one trial (and vice versa for the Least Found targets). In comparison, during the Validation Experiment, stimuli contained only Most Found targets or Least Found targets (as identified in the Observation Study), so no one target could be that much easier or harder relative to the others. 
 
 Visualize group comparisons with boxplots
 =========================================
 
-Numbers can be boring and text takes time to read. Pictures have colors, and can convey more information more quickly, so lets make figures that include all of our results described above.
+Numbers can be boring and text takes time to read. Pictures have pretty colors, so lets make figures that include all of our results described above. 
+
+More seriously, many formally published reports can either be very subject-specific, long, or too-technical to for most people to easily read and acquire information from. Images are a way of conveying lots of information and statistical results in a faster and more accessible way than text. However, just like how some writing can be confusing and hard to read, so can images. Take your time making them. Ask people not familiar with your project if they understand the results that the images are tryng to convey. 
 
 Target likelihood of being found
 --------------------------------
@@ -345,9 +349,9 @@ Here, we used boxplots to convey our information. I prefer them to bar graphs be
 Correlate target features with stimuli properties and performance
 =================================================================
 
-In visual search studies it is important to check for possible biases that may be affecting your results. A big one to look for is called the central bias, where stimuli towards the center of a screen tend to be more readily located. The median results, Wilcoxon reuslts, and boxplot of target distance from center (Fig 6) show that there are not significant differences in target distance across groups. But, this doesn't disprove a center bias, it just says that the target positions across groups were equivalent. To really check to see if there was a central bias, we need to look at the relationship between target positions and the likelihood that it was found, and position and total search time.
+In visual search studies it is important to check for possible biases that may be affecting your results. A big one to look for is called the central bias, where stimuli towards the center of a screen tend to be more readily located. The median results, Wilcoxon reuslts, and boxplot of target distance from center (Fig 6) show that there are not significant differences in target distance across groups. But, this doesn't disprove a center bias, it just says that the target positions across groups were equivalent. To really check to see if there was a central bias, we need to look at the relationships between: 1) target position and the likelihood the target was found, and 2) target position and search time spent on the target.
 
-In addition, the above results suggest that there is a realtionship between likehood of being found and search time. So, let's determine if either central bias or this possible relationship exist in our data. To do this, we are going to use a non-parametric correlation analysis with Spearman's *ρ*.
+In addition to determining if a central bias is present in our data, as mentioned before the above resutls suggest that there is a realtionship between a target's likehood of being found and the time it took to find it. Let determine if any of these relationships actually exist in our data. To do this, we are going to use a non-parametric correlation analysis with Spearman's *ρ*.
 
 Spearman's correlation analysis
 -------------------------------
@@ -364,12 +368,13 @@ for (i in 1:length(r1.Val.corData)){
   # run spearmans correlation
   corr.Res = rcorr(as.matrix(r1.Val.corData[[i]]), type = "spearman")
   # print with nice format
-  cap.Title = sprintf("Spearman's correlation results for %s", 
+  sprintf("Spearman's correlation results for %s", 
                       names(r1.Val.corData[i]))
   print(kable(flattenCorrMatrix(corr.Res$r, corr.Res$P), results = 'asis', 
-        caption = cap.Title, digits = 2))
+        digits = 2))
 }
 ```
+Observational Study Most Found Targets
 
 | Var1           | Var2         |    cor|     p|
 |:---------------|:-------------|------:|-----:|
@@ -377,11 +382,15 @@ for (i in 1:length(r1.Val.corData)){
 | DistFromCenter | MedDwellTime |   0.09|  0.25|
 | PerClick       | MedDwellTime |  -0.40|  0.00|
 
+Observational Study Least Found Targets
+
 | Var1           | Var2         |    cor|     p|
 |:---------------|:-------------|------:|-----:|
 | DistFromCenter | PerClick     |  -0.06|  0.41|
 | DistFromCenter | MedDwellTime |  -0.08|  0.33|
 | PerClick       | MedDwellTime |  -0.35|  0.00|
+
+Validation Experiment Easy Targets
 
 | Var1           | Var2         |    cor|     p|
 |:---------------|:-------------|------:|-----:|
@@ -389,20 +398,24 @@ for (i in 1:length(r1.Val.corData)){
 | DistFromCenter | MedDwellTime |  -0.03|  0.71|
 | PerClick       | MedDwellTime |  -0.32|  0.00|
 
+Validation Experiment Hard Targets
+
 | Var1           | Var2         |    cor|     p|
 |:---------------|:-------------|------:|-----:|
 | DistFromCenter | PerClick     |   0.17|  0.03|
 | DistFromCenter | MedDwellTime |  -0.12|  0.12|
 | PerClick       | MedDwellTime |  -0.04|  0.63|
 
-For every group except the Least Found targets in the Validation Study (Table 17), there is large and significant negative relationship between likelihood of being found and search time (Tables 14-16).
+Fortunately, there seems to be no evidence of a central bias (Tables 14-16), with the exception of the Least Found group during the Validation Experiment (Table 17). However, this relationship is in the positive direction, indicating that the farther away a target was from the center, the more likely it was to be found, the opposite of a central bias. 
 
-Fortunately, there seems to be no evidence of a central bias (Tables 14-16), with the exception of the Least Found group during the Validation Experiment (Table 17). However, this relationship is in the positive direction, indicating that the farther away a target was from the center, the more likely it was to be found, the opposite of a central bias. But let's plot these relationships and see what it looks like for ourselves.
+For every group except the Least Found targets in the Validation Study (Table 17), there is large and significant negative relationship between likelihood of being found and search time (Tables 14-16). Not just across difficulty groups, but also within each group, targets that were more likely to be found to less time to find, suggesting that subjects required less information to make a decision about whether a target was present or not. 
+
+But let's plot these relationships and see what it looks like for ourselves.
 
 Create scatterplots to visualize correlations
 =============================================
 
-To save space and more meaningfully convey information, I am going to include plots from both the Observational Study and the Validation Experiment in the same figure. Additionally, I am going to include data from both the Most and Least Found target groups on each plot to allow for easier visual comparison.
+To save space and more meaningfully convey information, I am going to include plots from both the Observational Study and the Validation Experiment in the same figure. Additionally, I am going to include data from both the Most and Least Found target groups on each plot to allow for visual comparison.
 
 Checking for an Effect of Center Bias
 -------------------------------------
@@ -431,4 +444,4 @@ For the Least Found in the Validation Experiment, ot looks like there could be s
 Conclusion
 ==========
 
-Overall, we learned a few important things from this data set. First of all, we were able to demonstrate that there were no significant biases affecting target findability. Most importantly, we were able to validate that the Most and Least Found targets identified in the Observation Study held up during the Validation Experiment. From here on, the Most and Least found groups from the Validation Experiment will now be considered Easy and Hard treatments that can be used to examine the effects of target crypticity on search behaviors. 
+Overall, we learned a few important things from this data set. First of all, we were able to demonstrate that there were no significant biases affecting target findability. Most importantly, we were able to validate that the Most and Least Found targets identified in the Observation Study held up during the Validation Experiment. From here on, the Most and Least found groups from the Validation Experiment will now be considered Easy and Hard treatments that can be used to examine the effects of target crypticity on search behaviors. Next, we will look at how target crypticity affected subject's search performance and efficiency.  
